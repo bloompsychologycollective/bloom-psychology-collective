@@ -271,7 +271,7 @@ export default function Contact() {
                   color: '#3D2314',
                   marginTop: 0,
                   marginBottom: '0.5rem',
-                }}>📱 Telehealth Available</h4>
+                }}>Telehealth Available</h4>
                 <p style={{
                   fontFamily: "'Lato', sans-serif",
                   fontSize: '0.88rem',

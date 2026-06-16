@@ -142,10 +142,6 @@ export default function Home() {
             gap: '1rem',
             flexWrap: 'wrap',
           }}>
-            <span style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontSize: '1.4rem',
-            }}>📱</span>
             <div>
               <h3 style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
