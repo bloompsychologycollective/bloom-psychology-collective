@@ -254,7 +254,37 @@ export default function Contact() {
                 textTransform: 'uppercase',
                 color: '#7A4A30',
                 margin: '0 0 0.5rem',
-              }}>Location</p>
+              }}>Location & Availability</p>
+              
+              {/* Telehealth Option */}
+              <div style={{
+                backgroundColor: '#FAF6F0',
+                borderRadius: '12px',
+                padding: '1rem',
+                marginBottom: '1rem',
+                borderLeft: '4px solid #7A4A30',
+              }}>
+                <h4 style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontSize: '1rem',
+                  fontWeight: 500,
+                  color: '#3D2314',
+                  marginTop: 0,
+                  marginBottom: '0.5rem',
+                }}>📱 Telehealth Available</h4>
+                <p style={{
+                  fontFamily: "'Lato', sans-serif",
+                  fontSize: '0.88rem',
+                  fontWeight: 300,
+                  color: '#3D2314',
+                  lineHeight: 1.6,
+                  margin: 0,
+                }}>
+                  Online sessions available for your convenience. Connect from home or anywhere that works for you.
+                </p>
+              </div>
+              
+              {/* In-Person Location */}
               <h4 style={{
                 fontFamily: "'Playfair Display', Georgia, serif",
                 fontSize: '1rem',
@@ -262,7 +292,7 @@ export default function Contact() {
                 color: '#3D2314',
                 marginTop: 0,
                 marginBottom: '0.75rem',
-              }}>Rivers of Yarrambat</h4>
+              }}>In-Person: Rivers of Yarrambat</h4>
               <p style={{
                 fontFamily: "'Lato', sans-serif",
                 fontSize: '0.88rem',
