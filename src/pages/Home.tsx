@@ -129,6 +129,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Telehealth Banner */}
+      <section style={{
+        background: 'linear-gradient(135deg, #E4EFF7 0%, #F2D9D5 100%)',
+        padding: '2rem 1.5rem',
+      }}>
+        <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '1rem',
+            flexWrap: 'wrap',
+          }}>
+            <span style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontSize: '1.4rem',
+            }}>📱</span>
+            <div>
+              <h3 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: '1.3rem',
+                fontWeight: 500,
+                color: '#3D2314',
+                margin: '0 0 0.25rem 0',
+              }}>Telehealth Available</h3>
+              <p style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: '0.95rem',
+                fontWeight: 300,
+                color: '#5C3520',
+                margin: 0,
+              }}>Online sessions available for your convenience. Connect from home or anywhere that works for you.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Approach banner - Chocolate brown sentence */}
       <section style={{
         backgroundColor: '#3D2314',
