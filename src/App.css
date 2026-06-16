@@ -182,3 +182,16 @@
     border-right-color: var(--border);
   }
 }
+
+/* Mobile photo sizing */
+@media (max-width: 768px) {
+  .emily-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .emily-grid img {
+    max-height: 500px;
+    object-fit: cover;
+  }
+}
