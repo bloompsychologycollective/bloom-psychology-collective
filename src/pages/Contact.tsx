@@ -219,7 +219,6 @@ export default function Contact() {
                 'Medicare rebates available with a Mental Health Care Plan (MHCP)',
                 'GP referral required for Medicare rebates',
                 'Private health insurance accepted',
-                'Reduced fee options available — please enquire',
               ].map((item, i) => (
                 <div key={i} style={{
                   display: 'flex',
