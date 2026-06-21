@@ -1,92 +1,6 @@
-import { useState } from 'react'
 import { Mail, Phone, MapPin, Clock, CheckCircle2 } from 'lucide-react'
 
 export default function Contact() {
-  const [submitted, setSubmitted] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    service: '',
-    message: '',
-    preferred: '',
-  })
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
-    setError('')
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError('')
-
-    try {
-      // Send form data to Basin
-      const response = await fetch('https://usebasin.com/f/e9e7b8c4b8c1', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          service: form.service,
-          message: form.message,
-          preferred_contact: form.preferred,
-        }),
-      })
-
-      if (response.ok) {
-        setSubmitted(true)
-        setForm({
-          name: '',
-          email: '',
-          phone: '',
-          service: '',
-          message: '',
-          preferred: '',
-        })
-      } else {
-        setError('Failed to send enquiry. Please try again or contact Emily directly.')
-      }
-    } catch (err) {
-      setError('Failed to send enquiry. Please try again or contact Emily directly.')
-      console.error('Form error:', err)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const inputStyle: React.CSSProperties = {
-    width: '100%',
-    padding: '0.85rem 1rem',
-    borderRadius: '10px',
-    border: '1.5px solid #EDE6DF',
-    backgroundColor: '#FAF6F0',
-    fontFamily: "'Lato', sans-serif",
-    fontSize: '0.95rem',
-    fontWeight: 300,
-    color: '#3D2314',
-    outline: 'none',
-    transition: 'border-color 0.2s',
-    boxSizing: 'border-box',
-  }
-
-  const labelStyle: React.CSSProperties = {
-    display: 'block',
-    fontFamily: "'Lato', sans-serif",
-    fontSize: '0.82rem',
-    fontWeight: 700,
-    color: '#5C3520',
-    letterSpacing: '0.08em',
-    marginBottom: '0.4rem',
-  }
-
   return (
     <div>
       {/* Hero */}
@@ -111,7 +25,7 @@ export default function Contact() {
             color: '#3D2314',
             marginTop: 0,
             marginBottom: '1.25rem',
-          }}>Book an Appointment</h1>
+          }}>Contact Information</h1>
           <p style={{
             fontFamily: "'Lato', sans-serif",
             fontSize: '1.05rem',
@@ -121,7 +35,7 @@ export default function Contact() {
             margin: '0 auto',
             maxWidth: '560px',
           }}>
-            Taking the first step is the hardest part. We are here to make it as easy and welcoming as possible.
+            Reach out to Bloom Psychology Collective to discuss how we can support you on your mental health journey.
           </p>
         </div>
       </section>
@@ -150,7 +64,7 @@ export default function Contact() {
             {[
               { icon: <Mail size={20} color="#7A4A30" />, label: 'Email', value: 'emilydamourpsychology@gmail.com', href: 'mailto:emilydamourpsychology@gmail.com' },
               { icon: <Phone size={20} color="#7A4A30" />, label: 'Phone', value: '0466 620 977', href: 'tel:0466620977' },
-              { icon: <MapPin size={20} color="#7A4A30" />, label: 'Location', value: '28 Kurrak Road, Yarrambat, VIC 3091', href: undefined },
+              { icon: <MapPin size={20} color="#7A4A30" />, label: 'Location', value: 'Rivers of Yarrambat\nHealth + Wellness Precinct\n28 Kurrak Road\nYARRAMBAT VIC 3091', href: undefined },
               { icon: <Clock size={20} color="#7A4A30" />, label: 'Hours', value: 'Mon & Fri: am, pm · Tue & Thu: am', href: undefined },
             ].map(item => (
               <div key={item.label} style={{
@@ -186,6 +100,7 @@ export default function Contact() {
                       fontWeight: 300,
                       color: '#3D2314',
                       textDecoration: 'none',
+                      whiteSpace: 'pre-line',
                     }}>{item.value}</a>
                   ) : (
                     <p style={{
@@ -194,6 +109,7 @@ export default function Contact() {
                       fontWeight: 300,
                       color: '#3D2314',
                       margin: 0,
+                      whiteSpace: 'pre-line',
                     }}>{item.value}</p>
                   )}
                 </div>
@@ -305,195 +221,68 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Contact CTA Box */}
           <div>
-            {submitted ? (
-              <div style={{
-                backgroundColor: '#F9EDEB',
-                borderRadius: '20px',
-                padding: '3rem',
-                textAlign: 'center',
+            <div style={{
+              backgroundColor: '#F9EDEB',
+              borderRadius: '20px',
+              padding: '2.5rem',
+              textAlign: 'center',
+            }}>
+              <h2 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: '1.6rem',
+                fontWeight: 500,
+                color: '#3D2314',
+                marginTop: 0,
+                marginBottom: '1.5rem',
+              }}>Ready to Get Started?</h2>
+              <p style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: '1rem',
+                fontWeight: 300,
+                color: '#5C3520',
+                lineHeight: 1.8,
+                marginBottom: '2rem',
               }}>
-                <div style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: '#EDE6DF',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  margin: '0 auto 1.5rem',
-                }}>
-                  <CheckCircle2 size={32} color="#7A4A30" />
-                </div>
-                <h3 style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: '1.6rem',
-                  fontWeight: 500,
-                  color: '#3D2314',
-                  marginTop: 0,
-                  marginBottom: '0.75rem',
-                }}>Thank you for reaching out.</h3>
-                <p style={{
+                Reach out to Emily directly to discuss your needs and book your first session.
+              </p>
+              
+              <a 
+                href="mailto:emilydamourpsychology@gmail.com"
+                style={{
+                  display: 'inline-block',
+                  backgroundColor: '#3D2314',
+                  color: '#FAF6F0',
                   fontFamily: "'Lato', sans-serif",
-                  fontSize: '1rem',
-                  fontWeight: 300,
-                  color: '#5C3520',
-                  lineHeight: 1.8,
-                  margin: 0,
-                }}>
-                  Emily will be in touch within 1–2 business days to confirm your appointment or discuss your enquiry. We look forward to supporting you.
-                </p>
-              </div>
-            ) : (
-              <div style={{
-                backgroundColor: '#F9EDEB',
-                borderRadius: '20px',
-                padding: '2.5rem',
+                  fontSize: '0.95rem',
+                  fontWeight: 700,
+                  border: 'none',
+                  padding: '1rem 2rem',
+                  borderRadius: '50px',
+                  cursor: 'pointer',
+                  letterSpacing: '0.06em',
+                  textDecoration: 'none',
+                  transition: 'background-color 0.2s',
+                  marginBottom: '1rem',
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#5C3520'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = '#3D2314'}
+              >
+                Send an Enquiry
+              </a>
+
+              <p style={{
+                fontFamily: "'Lato', sans-serif",
+                fontSize: '0.85rem',
+                fontWeight: 300,
+                color: '#7A4A30',
+                lineHeight: 1.6,
+                marginTop: '1.5rem',
               }}>
-                <h2 style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontSize: '1.6rem',
-                  fontWeight: 500,
-                  color: '#3D2314',
-                  marginTop: 0,
-                  marginBottom: '1.75rem',
-                }}>Enquiry & Booking Form</h2>
-                <form onSubmit={handleSubmit}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-row">
-                    <div>
-                      <label style={labelStyle}>Full Name *</label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        value={form.name}
-                        onChange={handleChange}
-                        placeholder="Your name"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Email Address *</label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={form.email}
-                        onChange={handleChange}
-                        placeholder="your@email.com"
-                        style={inputStyle}
-                      />
-                    </div>
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }} className="form-row">
-                    <div>
-                      <label style={labelStyle}>Phone Number</label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={form.phone}
-                        onChange={handleChange}
-                        placeholder="04XX XXX XXX"
-                        style={inputStyle}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Preferred Contact</label>
-                      <select
-                        name="preferred"
-                        value={form.preferred}
-                        onChange={handleChange}
-                        style={inputStyle}
-                      >
-                        <option value="">Select...</option>
-                        <option value="email">Email</option>
-                        <option value="phone">Phone</option>
-                        <option value="either">Either</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div style={{ marginBottom: '1rem' }}>
-                    <label style={labelStyle}>Service of Interest *</label>
-                    <select
-                      name="service"
-                      required
-                      value={form.service}
-                      onChange={handleChange}
-                      style={inputStyle}
-                    >
-                      <option value="">Select a service...</option>
-                      <option value="individual">Individual Therapy</option>
-                      <option value="prenatal-group">Prenatal Group Program</option>
-                      <option value="postpartum">Postpartum Support</option>
-                      <option value="postpartum-group">Postpartum Group Program</option>
-                      <option value="loss-group">After Loss Group</option>
-                      <option value="general">General Enquiry</option>
-                    </select>
-                  </div>
-
-                  <div style={{ marginBottom: '1.75rem' }}>
-                    <label style={labelStyle}>Tell Us a Little About What You're Looking For</label>
-                    <textarea
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      rows={5}
-                      placeholder="Share as much or as little as you'd like..."
-                      style={{ ...inputStyle, resize: 'vertical', minHeight: '120px' }}
-                    />
-                  </div>
-
-                  {error && (
-                    <div style={{
-                      backgroundColor: '#F2D9D5',
-                      borderRadius: '10px',
-                      padding: '1rem',
-                      marginBottom: '1rem',
-                      color: '#7A4A30',
-                      fontFamily: "'Lato', sans-serif",
-                      fontSize: '0.9rem',
-                    }}>
-                      {error}
-                    </div>
-                  )}
-
-                  <p style={{
-                    fontFamily: "'Lato', sans-serif",
-                    fontSize: '0.78rem',
-                    fontWeight: 300,
-                    color: '#7A4A30',
-                    lineHeight: 1.6,
-                    marginBottom: '1.25rem',
-                  }}>
-                    Your privacy is important to us. All information shared is confidential and handled in accordance with Australian Privacy Principles.
-                  </p>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    style={{
-                      width: '100%',
-                      backgroundColor: loading ? '#C4B5A5' : '#3D2314',
-                      color: '#FAF6F0',
-                      fontFamily: "'Lato', sans-serif",
-                      fontSize: '0.95rem',
-                      fontWeight: 700,
-                      border: 'none',
-                      padding: '1rem',
-                      borderRadius: '50px',
-                      cursor: loading ? 'not-allowed' : 'pointer',
-                      letterSpacing: '0.06em',
-                      transition: 'background-color 0.2s',
-                    }}
-                  >
-                    {loading ? 'Sending...' : 'Send Enquiry'}
-                  </button>
-                </form>
-              </div>
-            )}
+                Or call <a href="tel:0466620977" style={{ color: '#3D2314', textDecoration: 'none', fontWeight: 500 }}>0466 620 977</a>
+              </p>
+            </div>
           </div>
         </div>
       </section>
